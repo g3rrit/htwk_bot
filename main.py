@@ -1,0 +1,119 @@
+from datetime import datetime
+import schedule
+import pickle
+import discord
+
+TOKEN = "XXXXXXXXXXX"
+
+DATE_FILE = "dates/dates"
+
+client = discord.Client()
+
+
+class Deadlines:
+    instance = None
+    def __init__(self):
+        self.dates = []
+
+    def get():
+        if not Deadlines.instance:
+            Deadlines.instance = Deadlines()
+        return Deadlines.instance
+
+    def save(self):
+        with open(DATE_FILE, "wb") as file:
+            pickle.dump(self.dates, file, pickle.HIGHEST_PROTOCOL)
+
+    def load(self):
+        with open(DATE_FILE, "rb") as file:
+            self.dates = pickle.load(file)
+    
+    def add_date(self, date_str, module_str):
+        try:
+            date = {
+                "id" : len(self.dates),
+                "date" : datetime.strptime(date_str, "%d.%m.%y:%H"),
+                "module" : module_str
+            }
+            self.dates.append(date)
+        except: 
+            raise Exception("wrong format")
+
+        self.save()
+        return date
+
+    def remove_date(self, count):
+        new_dates = [date for date in self.dates if date["id"] != count]
+        self.dates = new_dates
+        print(self.dates)
+        self.save()
+
+    def get_dates(self):
+        return self.dates
+
+    def update(self):
+        new_dates = [date for date in self.dates if date["date"] > datetime.now()]
+        self.dates = new_dates
+        print(self.dates)
+        self.save()
+
+def date_to_string(date):
+    return "| ID[" + str(date["id"]) + "] MODULE: " +  date["module"] + " - DATE: " + date["date"].strftime("%d.%m.%y %H Uhr") + " |"
+
+
+@client.event
+async def on_message(message):
+    print(message)
+
+    if message.author == client.user:
+        return
+
+    if message.content.startswith("!addDate"):
+        print(message.content)
+        msg_arr = message.content.split()
+        try:
+            date_str = msg_arr[1]
+            module = msg_arr[2]
+            date = Deadlines.get().add_date(date_str, module)
+            await client.send_message(message.channel, "Deadline hinzugefuegt | " + date_to_string(date))
+        except Exception as e:
+            print(e)
+            await client.send_message(message.channel, "ungueltige eingabe | !addDate <dd.mm.yy:hh> <modul>")
+
+    if message.content.startswith("!getDates"):
+        ret_msg = "\n------DEADLINES-----\n"
+        for date in Deadlines.get().get_dates():
+            ret_msg = ret_msg + date_to_string(date) + "\n"
+            print(ret_msg)
+        await client.send_message(message.channel, ret_msg)
+
+    if message.content.startswith("!removeDate"):
+        msg_arr = message.content.split()
+        try:
+            m_id = int(msg_arr[1])
+            Deadlines.get().remove_date(m_id)
+        except Exception as e:
+            print(e)
+            await client.send_message(message.channel, "ungueltige eingabe | !removeDate <id>")
+
+@client.event
+async def on_read():
+    print("Logged in")
+    print(client.user.name)
+    print(client.user.id)
+    print("------------")
+
+
+def update():
+    print("updating dates")
+    Deadlines.get().update()
+
+def init():
+    Deadlines.get().load()
+    schedule.every(1).minutes.do(update)
+
+    client.run(TOKEN)
+
+
+if __name__ == "__main__":
+    init()
