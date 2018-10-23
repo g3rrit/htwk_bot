@@ -18,8 +18,8 @@ def restart_program():
 '''
 
 def restart_program():
-    g = git.cmd.Git(".")
-    g.pull()
+    g = git.Git(".")
+    g.pull("origin", "master")
 
     os.execv(sys.executable, ["python3"] + sys.argv)
 
