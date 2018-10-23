@@ -1,8 +1,10 @@
 ## htwk_bot
 
 #### running the bot
+
 requirement:
 - python3 
+
 python modules:
 - git
 - discord
