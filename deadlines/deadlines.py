@@ -1,6 +1,4 @@
 from datetime import datetime
-import schedule
-import pickle
 
 
 '''

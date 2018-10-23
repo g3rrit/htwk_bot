@@ -1,6 +1,7 @@
 import os
 import sys
 import git
+import subprocess
 
 '''
 def restart_program():
@@ -24,3 +25,8 @@ def restart_program():
     os.execv(sys.executable, ["python3"] + sys.argv)
 
 
+def install(package):
+    try:
+        subprocess.call(["python3",  "-m pip3", "install", package])
+    except Exception as e:
+        raise e

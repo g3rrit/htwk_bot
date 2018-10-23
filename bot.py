@@ -38,6 +38,15 @@ class Bot:
         if message.content.startswith("!restart"):
             util.restart_program()
 
+        if message.content.startswith("!install"):
+            msg_arr = message.content.split()
+            if(len(msg_arr) > 1):
+                try: 
+                    util.install(msg_arr[1])
+                    await client.send_message(message.channel, "Module: " + msg_arr[1] + " wurde installiert")
+                except Exception as e:
+                    await client.send_message(message.channel, str(e))
+
         for handle in Bot.get().handles:
             try:
                 handle.on_message(Bot.get(), client, message)
