@@ -30,7 +30,8 @@ class Bot:
         self.handles = list()
         self.msg_buffer = list()
 
-    def start(self):
+    @staticmethod
+    def start():
         client.run(TOKEN)
 
     def add_handle(self, handle):
