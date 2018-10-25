@@ -5,6 +5,9 @@ TOKEN = "NTAzOTk0Nzc1MTM4MDc0NjM0.DrDrOg.jPx2hh-TLOmuSBcnU5gXmifdehA";
 
 class Handle:
 
+    def __init__(self):
+        pass
+
     command = None
 
     def on_message(self, client, message):
