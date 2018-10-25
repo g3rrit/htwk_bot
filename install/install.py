@@ -1,6 +1,7 @@
 from bot import Handle
 import subprocess
 
+
 class Install_Handle(Handle):
 
     command = "install"
