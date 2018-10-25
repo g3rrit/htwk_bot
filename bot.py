@@ -46,7 +46,7 @@ class Bot:
         if message.author == client.user:
             return
 
-        msg_arr = message.content.split();
+        msg_arr = message.content.split()
 
         if msg_arr[0][0] is "!":
 
