@@ -10,7 +10,7 @@ class Handle:
 
     command = None
 
-    def on_message(self, client, message):
+    def on_message(self, bot, client, message):
         pass
 
     def man(self):
