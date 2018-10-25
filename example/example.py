@@ -6,6 +6,7 @@
 # first you wanna load the handle class from the bot module
 from bot import Handle
 
+
 # then you create a class that extends the handle class
 class Example_Handle(Handle):
 
