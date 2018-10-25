@@ -4,7 +4,13 @@ import util
 TOKEN = "NTAzOTk0Nzc1MTM4MDc0NjM0.DrDrOg.jPx2hh-TLOmuSBcnU5gXmifdehA";
 
 class Handle:
+
+    command = None
+    
     def on_message(self, client, message):
+        pass
+
+    def man(self):
         pass
 
 client = discord.Client()
@@ -35,6 +41,8 @@ class Bot:
         if message.author == client.user:
             return
 
+        msg_arr = message.content.split();
+
         if message.content.startswith("!restart"):
             util.restart_program()
 
@@ -47,11 +55,26 @@ class Bot:
                 except Exception as e:
                     await client.send_message(message.channel, str(e))
 
-        for handle in Bot.get().handles:
-            try:
-                handle.on_message(Bot.get(), client, message)
-            except Exception as e:
-                await client.send_message(message.channel, str(e))
+        if message.content.startswith("!man"):
+            for handle in Bot.get().handles:
+                try:
+                    if msg_arr[1] == handle.command:
+                        man_str = "\n".join(handle.man())
+                        await client.send_message(message.channel, "------------\n" + man_str)
+                except Exception as e:
+                    await client.send_message(message.channel, str(e))
+
+        if msg_arr[0][0] is "!":
+
+            msg_command = msg_arr[0][1:len(msg_arr[0])]
+
+            for handle in Bot.get().handles:
+                try:
+                    if handle.command == msg_command:
+                        handle.on_message(Bot.get(), client, " ".join(msg_arr[1:len(msg_arr)]))
+                except Exception as e:
+                    await client.send_message(message.channel, str(e))
+
 
         for msg in Bot.get().msg_buffer:
             if isinstance(msg, str) and len(msg) > 0:
