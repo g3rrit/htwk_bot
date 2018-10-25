@@ -72,12 +72,12 @@ class Bot:
             command_arr = list()
             for handle in Bot.get().handles:
                 try:
-                    command_list.append(handle.command)
+                    command_arr.append(handle.command)
                 except Exception as e:
                     await client.send_message(message.channel, str(e))
                     
             try:
-                await client.send_message(message.channel, "COMMANDS:\n- ".join(command_list) + "\n to get a more detailed info of each command use !man <command>"
+                await client.send_message(message.channel, "COMMANDS:\n- ".join(command_arr) + "\n to get a more detailed info of each command use !man <command>"
             except Exception as e:
                 await client.send_message(message.channel, str(e))
 
