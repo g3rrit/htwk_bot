@@ -1,4 +1,4 @@
-#add your modules here ->
+# add your modules here ->
 from info import info
 from example import example
 from restart import restart
