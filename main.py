@@ -1,14 +1,8 @@
 from bot import Bot
-from example import example
+import handles
 ####################################
 
-#add your modules here ->
-HANDLES  = [     
-        example.Example_Handle(),
-]
-
-####################################
 bot = Bot.get()
-for handle in HANDLES:
+for handle in handles.HANDLES:
     bot.add_handle(handle)
 bot.start()
