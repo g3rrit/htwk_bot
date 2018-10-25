@@ -20,8 +20,9 @@ client = discord.Client()
 class Bot:
     Instance = None
 
+    @staticmethod
     def get():
-        if Bot.Instance == None:
+        if Bot.Instance is None:
             Bot.Instance = Bot()
         return Bot.Instance
 
