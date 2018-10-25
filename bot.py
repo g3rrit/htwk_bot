@@ -41,7 +41,7 @@ class Bot:
         self.msg_buffer.append(msg)
 
     @client.event
-    async def on_message(message):
+    async def on_message(self, message):
         # dont reply to itself
         if message.author == client.user:
             return
@@ -66,7 +66,7 @@ class Bot:
         Bot.get().msg_buffer.clear()
 
     @client.event
-    async def on_ready():
+    async def on_ready(self):
         print("Logged in")
         print(client.user.name)
         print(client.user.id)
