@@ -7,10 +7,10 @@ class Install_Handle(Handle):
 
     def on_message(self, bot, client, message):
         try:
-            subprocess.call(["python3",  "-m pip3", "install", message])
+            subprocess.call(["python3", "-m pip3", "install", message])
             bot.send_message("Module: " + message + " was installed")
         except Exception as e:
-            raise e
+            bot.send_message("unable to install " + message + "\n" + str(e))
 
     def man(self):
         return [

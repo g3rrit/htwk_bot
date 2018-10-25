@@ -1,5 +1,4 @@
 import discord
-import util
 
 TOKEN = "NTAzOTk0Nzc1MTM4MDc0NjM0.DrDrOg.jPx2hh-TLOmuSBcnU5gXmifdehA";
 

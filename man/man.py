@@ -6,13 +6,16 @@ class Man_Handle(Handle):
 
     def on_message(self, bot, client, message):
 
+        if message == "":
+            return
+
         msg_arr = message.split()
 
         for handle in bot.handles:
             try:
                 if msg_arr[0] == handle.command:
                     man_str = "\n".join(handle.man())
-                    bot.send_message("\n-- Manpage for !" + handle.command + "\n" + man_str)
+                    bot.send_message("-------------\n-- Manpage for !" + handle.command + " --\n" + man_str)
             except Exception as e:
                 bot.send_message(str(e))
 
