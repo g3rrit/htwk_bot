@@ -6,5 +6,6 @@ ADD . /app
 
 RUN pip3 install -r app/requirements.txt
 
-CMD [ "python3", "app/main.py", ">", "app/log/htwk_bot.log", "2>&1"]
+WORKDIR /app
+CMD [ "python3", "main.py", ">>/dev/null", "2>&1"]
 
