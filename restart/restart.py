@@ -13,7 +13,7 @@ class Restart_Handle(Handle):
         bot.send_message("git:" + ans)
 
         # os.execv(sys.executable, ["python3"] + sys.argv)
-        bot.stop()
+        exit(0)
 
     def man(self):
         return [
