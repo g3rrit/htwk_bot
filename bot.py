@@ -46,9 +46,6 @@ class Bot:
     def send_message(self, msg):
         self.msg_buffer.append(msg)
 
-    def stop(self):
-        client.logout()
-
 
 @client.event
 async def on_message(message):
