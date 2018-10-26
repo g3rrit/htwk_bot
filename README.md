@@ -6,8 +6,7 @@ requirement:
 - python3 
 
 python modules:
-- git
-- discord
+- see [requirements](requirements.txt) (pip3 install -r requirements.txt)
 
 #### adding a module
 If you want to add your own module follow these steps:
