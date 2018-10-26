@@ -1,8 +1,9 @@
 FROM alpine
 
-RUN apk add python3 git
+RUN apk add python3 git openssh-client
 
 ADD . /app
+ADD ~/.ssh/id_rsa.pub /root/.ssh/id_rsa.pub
 
 RUN pip3 install -r app/requirements.txt
 
