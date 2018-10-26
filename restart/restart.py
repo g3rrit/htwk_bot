@@ -1,17 +1,19 @@
-from bot import Handle
-import os
-import sys
 import git
 
-class Restart_Handle(Handle):
+from bot import Handle
 
+
+class Restart_Handle(Handle):
     command = "restart"
 
     def on_message(self, bot, client, message):
-        g = git.Git(".")
-        g.pull("origin", "master")
+        g: git.Git = git.Git(".")
+        ans = g.pull("origin", "master")
 
-        os.execv(sys.executable, ["python3"] + sys.argv)
+        bot.send_message("git:" + ans)
+
+        # os.execv(sys.executable, ["python3"] + sys.argv)
+        bot.stop()
 
     def man(self):
         return [

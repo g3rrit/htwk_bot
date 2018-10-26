@@ -1,6 +1,9 @@
 import discord
 
+import htwk_logging
+
 TOKEN = "NTAzOTk0Nzc1MTM4MDc0NjM0.DrDrOg.jPx2hh-TLOmuSBcnU5gXmifdehA"
+LOG = htwk_logging.create_logger(__name__)
 
 
 class Handle:
@@ -10,7 +13,7 @@ class Handle:
 
     command = None
 
-    def on_message(self, bot, client, message):
+    def on_message(self, bot: "Bot", client, message):
         pass
 
     def man(self):
@@ -43,6 +46,9 @@ class Bot:
     def send_message(self, msg):
         self.msg_buffer.append(msg)
 
+    def stop(self):
+        client.logout()
+
 
 @client.event
 async def on_message(message):
@@ -50,6 +56,7 @@ async def on_message(message):
     if message.author == client.user:
         return
 
+    LOG.info("got new message: [%s] %s", message.author, message.content)
     msg_arr = message.content.split()
 
     if msg_arr[0][0] is "!":
@@ -72,7 +79,4 @@ async def on_message(message):
 
 @client.event
 async def on_ready():
-    print("Logged in")
-    print(client.user.name)
-    print(client.user.id)
-    print("------------")
+    LOG.info("user " + client.user.name + " with id " + str(client.user.id) + " logged in")
