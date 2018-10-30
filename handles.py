@@ -5,6 +5,7 @@ from restart import restart
 from man import man
 from install import install
 from bongoloch import bongoloch
+from deadlines import deadlines
 
 HANDLES = [
     example.Example_Handle(),
@@ -12,7 +13,8 @@ HANDLES = [
     info.Info_Handle(),
     man.Man_Handle(),
     install.Install_Handle(),
-    bongoloch.Bongoloch_Handle()
+    bongoloch.Bongoloch_Handle(),
+    deadlines.Deadlines_Handle()
 ]
 
 
