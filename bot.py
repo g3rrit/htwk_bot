@@ -13,7 +13,15 @@ class Handle:
 
     command = None
 
-    def on_message(self, bot: "Bot", client, message):
+    def on_message(self, bot: "Bot", client, message, raw_message):
+        """
+        Method that is called when the command specified by the handle is received
+        :param bot: instance of the bot, of class Bot
+        :param client: client instance of the bot, of class discord.Client
+        :param message: argument string of the received message, not including the command, of class str
+        :param raw_message: full message with related members such as author, of class discord.Message
+        :return: nothing
+        """
         pass
 
     def man(self):
@@ -63,7 +71,7 @@ async def on_message(message):
         for handle in Bot.get().handles:
             try:
                 if handle.command == msg_command:
-                    handle.on_message(Bot.get(), client, " ".join(msg_arr[1:len(msg_arr)]))
+                    handle.on_message(Bot.get(), client, " ".join(msg_arr[1:len(msg_arr)]), message)
             except Exception as e:
                 await client.send_message(message.channel, str(e))
 
