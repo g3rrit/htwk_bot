@@ -1,5 +1,8 @@
 from datetime import datetime
 from bot import Handle
+import pickle
+
+DATE_FILE = "dates"
 
 
 class Deadlines_Handle(Handle):
@@ -7,17 +10,21 @@ class Deadlines_Handle(Handle):
 
     dates = []
 
+    def __init__(self):
+        super().__init__()
+        self.load_dates()
+
     def on_message(self, bot, client, message, raw_message):
         msg_array = message.split()
 
         if len(msg_array) == 0 or msg_array[0] == "list":
-            bot.send_message("list")
+            self.list_dates()
         elif msg_array[0] == "add":
-            bot.send_message("add")
+            self.add_date("".join(msg_array[1:len(msg_array)]))
         elif msg_array[0] == "edit":
-            bot.send_message("edit")
+            self.edit_date(int(msg_array[1]))
         elif msg_array[0] == "remove":
-            bot.send_message("remove")
+            self.remove_date(int(msg_array[1]))
         else:
             raise Exception("Unknown argument: " + msg_array[0] + ". See man " + self.command)
 
@@ -25,9 +32,33 @@ class Deadlines_Handle(Handle):
         # TODO
         return []
 
-    def send_deadlines(self, bot):
-        for date in self.dates:
-            bot.send_message(date)
+    def send_dates(self, bot):
+        # TODO
+        pass
+
+    def save_dates(self):
+        with open(DATE_FILE, "wb") as file:
+            pickle.dump(self.dates, file, pickle.HIGHEST_PROTOCOL)
+
+    def load_dates(self):
+        with open(DATE_FILE, "rb") as file:
+            self.dates = pickle.load(file)
+
+    def list_dates(self):
+        # TODO
+        pass
+
+    def add_date(self, date_string):
+        # TODO
+        pass
+
+    def edit_date(self, date_id):
+        # TODO
+        pass
+
+    def remove_date(self, date_id):
+        # TODO
+        pass
 
 
 '''
