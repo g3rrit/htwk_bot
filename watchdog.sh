@@ -11,8 +11,8 @@ fi
 
 # echo $pid
 
-running=$(ps -ef | grep "$pid" | grep -v "grep" | wc -l)
-if [ $running -eq 1 ]; then
+running=`expr $(ps -ef | grep "$pid" | grep -v "grep" | wc -l) + $(ps -ef | grep "python3 main.py" | grep -v "grep" | wc -l) `
+if [ $running -ge 1 ]; then
     echo "program still running"
 else
     nohup python3 "main.py" >/dev/null 2>&1 &
