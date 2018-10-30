@@ -8,7 +8,7 @@ class Deadlines_Handle(Handle):
     dates = []
 
     def on_message(self, bot, client, message):
-        msg_array = message.split()
+        msg_array = message.content.split()
         msg_array = [msg.strip for msg in msg_array]
 
         if len(msg_array) == 0 or msg_array[0] == "list":
