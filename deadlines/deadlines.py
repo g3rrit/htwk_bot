@@ -20,9 +20,15 @@ class Deadlines_Handle(Handle):
         if len(msg_array) == 0 or msg_array[0] == "list":
             self.list_dates()
         elif msg_array[0] == "add":
-            self.add_date("".join(msg_array[1:len(msg_array)]))
+            try:
+                self.add_date("".join(msg_array[1:len(msg_array)]))
+            except ValueError:
+                raise Exception("Unknown argument: " + msg_array[0] + " " + msg_array[1] + ". See man " + self.command)
         elif msg_array[0] == "edit":
-            self.edit_date(int(msg_array[1]))
+            try:
+                self.edit_date(int(msg_array[1]))
+            except ValueError:
+                raise Exception("Unknown argument: " + msg_array[0] + " " + msg_array[1] + ". See man " + self.command)
         elif msg_array[0] == "remove":
             self.remove_date(int(msg_array[1]))
         else:
