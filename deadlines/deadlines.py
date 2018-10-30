@@ -20,6 +20,8 @@ class Deadlines_Handle(Handle):
         elif msg_array[0] == "remove":
             bot.send_message("remove")
 
+        print(msg_array)
+
     def man(self):
         # TODO
         return []
