@@ -11,14 +11,14 @@ class Deadlines_Handle(Handle):
         msg_array = message.split()
         msg_array = [msg.strip for msg in msg_array]
 
-        if msg_array[0] == "add":
+        if len(msg_array) == 0 or msg_array[0] == "list":
+            bot.send_message("list")
+        elif msg_array[0] == "add":
             bot.send_message("add")
         elif msg_array[0] == "edit":
             bot.send_message("edit")
         elif msg_array[0] == "remove":
             bot.send_message("remove");
-        elif msg_array[0] in ["list", ""]:
-            bot.send_message("list")
 
     def man(self):
         # TODO
