@@ -19,6 +19,8 @@ class Deadlines_Handle(Handle):
         elif msg_array[0] == "remove":
             bot.send_message("remove")
 
+        raise Exception("Unknown argument: " + msg_array[0] + ". See man " + self.command)
+
     def man(self):
         # TODO
         return []
