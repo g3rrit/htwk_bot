@@ -9,7 +9,6 @@ class Deadlines_Handle(Handle):
 
     def on_message(self, bot, client, message, raw_message):
         msg_array = message.split()
-        msg_array = [msg.strip for msg in msg_array]
 
         if len(msg_array) == 0 or msg_array[0] == "list":
             bot.send_message("list")
@@ -19,9 +18,6 @@ class Deadlines_Handle(Handle):
             bot.send_message("edit")
         elif msg_array[0] == "remove":
             bot.send_message("remove")
-
-        for msg in msg_array:
-            bot.send_message(msg)
 
     def man(self):
         # TODO
