@@ -2,10 +2,9 @@ from bot import Handle
 
 
 class Info_Handle(Handle):
-
     command = "info"
 
-    def on_message(self, bot, client, message):
+    def on_message(self, bot, client, message, raw_message):
         command_arr = list()
         for handle in bot.handles:
             try:

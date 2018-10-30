@@ -9,7 +9,6 @@ from bot import Handle
 
 # then you create a class that extends the handle class
 class Example_Handle(Handle):
-
     # name of the command you want your on_message function to react to
     command = "example"
 
@@ -19,7 +18,7 @@ class Example_Handle(Handle):
     # : https://discordpy.readthedocs.io/en/latest/api.html#client 
     # message is an object of type string
     # bot is the object of type Bot
-    def on_message(self, bot, client, message):
+    def on_message(self, bot, client, message, raw_message):
 
         print(message)
 

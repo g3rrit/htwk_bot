@@ -3,10 +3,9 @@ import subprocess
 
 
 class Install_Handle(Handle):
-
     command = "install"
 
-    def on_message(self, bot, client, message):
+    def on_message(self, bot, client, message, raw_message):
         try:
             subprocess.call(["python3", "-m", "pip", "install", message])
             bot.send_message("Module: " + message + " was installed")

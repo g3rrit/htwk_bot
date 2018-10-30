@@ -6,7 +6,7 @@ from bot import Handle
 class Restart_Handle(Handle):
     command = "restart"
 
-    def on_message(self, bot, client, message):
+    def on_message(self, bot, client, message, raw_message):
         g: git.Git = git.Git(".")
         ans = g.pull("https://github.com/pearisgreen/htwk_bot.git", "master")
 

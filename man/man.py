@@ -1,10 +1,10 @@
 from bot import Handle
 
-class Man_Handle(Handle):
 
+class Man_Handle(Handle):
     command = "man"
 
-    def on_message(self, bot, client, message):
+    def on_message(self, bot, client, message, raw_message):
 
         if message == "":
             return
@@ -18,7 +18,6 @@ class Man_Handle(Handle):
                     bot.send_message("-------------\n-- Manpage for !" + handle.command + " --\n" + man_str)
             except Exception as e:
                 bot.send_message(str(e))
-
 
     def man(self):
         return [
