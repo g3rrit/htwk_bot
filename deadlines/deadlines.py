@@ -47,12 +47,14 @@ class Deadlines_Handle(Handle):
         try:
             with open(DATE_FILE, "rb") as file:
                 self.dates = pickle.load(file)
+                self.update()
         except:
             # TODO
             pass
 
     def list_dates(self, bot):
         # TODO
+        self.update()
         for date in self.dates:
             bot.send_message( "ID[" + str(date["id"]) + "] MODULE: " +  date["module"] + " - DATE: " + date["date"].strftime("%d.%m.%y %H Uhr") + " |")
 
@@ -66,14 +68,19 @@ class Deadlines_Handle(Handle):
             self.dates.append(date)
         except:
             raise Exception("Wrong format:" + date_str + " " + module_str + ". See man " + self.command)
+        self.update()
 
     def edit_date(self, date_id, date):
         # TODO
-        pass
+        self.update()
 
     def remove_date(self, date_id):
         # TODO
-        pass
+        self.update()
+
+    def update(self):
+        self.dates = [date for date in self.dates if date["date"] > datetime.now()]
+        self.save_dates()
 
 
 '''
