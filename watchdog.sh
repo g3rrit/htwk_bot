@@ -15,6 +15,7 @@ running=`expr $(ps -ef | grep "^$pid " | grep -v "grep" | wc -l) + $(ps -ef | gr
 if [ $running -ge 1 ]; then
     echo "program still running"
 else
+	git pull
     nohup python3 "main.py" >/dev/null 2>&1 &
 fi
 
