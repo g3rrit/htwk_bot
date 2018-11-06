@@ -11,7 +11,7 @@ fi
 
 # echo $pid
 
-running=`expr $(ps -ef | grep "$pid" | grep -v "grep" | wc -l) + $(ps -ef | grep "python3 main.py" | grep -v "grep" | wc -l) `
+running=`expr $(ps -ef | grep "^$pid " | grep -v "grep" | wc -l) + $(ps -ef | grep "python3 main.py" | grep -v "grep" | wc -l) `
 if [ $running -ge 1 ]; then
     echo "program still running"
 else
