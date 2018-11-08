@@ -7,6 +7,7 @@ from install import install
 from bongoloch import bongoloch
 from deadlines import deadlines
 from fortytwo import fortytwo
+from clyde import clyde
 
 HANDLES = [
     example.Example_Handle(),
@@ -16,7 +17,8 @@ HANDLES = [
     install.Install_Handle(),
     bongoloch.Bongoloch_Handle(),
     deadlines.Deadlines_Handle(),
-	fortytwo.Fortytwo_Handle()
+    fortytwo.Fortytwo_Handle(),
+    clyde.Clyde_Handle()
 ]
 
 
