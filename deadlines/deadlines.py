@@ -75,7 +75,7 @@ class Deadlines_Handle(Handle):
 
     def edit_date(self, date_id, date):
         self.remove_date(date_id)
-        self.add_date(date.partition()[0], date.partition()[2])
+        self.add_date(date.partition()[0], date.split(maxsplit=1)[2])
 
     def remove_date(self, date_id):
         self.dates = [date for date in self.dates if date["id"] != date_id]
