@@ -47,7 +47,7 @@ class Deadlines_Handle(Handle):
             "    removes the date of the id, id given by list",
             "  !deadlines edit <id> <dd>.<mm>.<yy>:<HH>:<MM> <description>",
             "    changes data of the date of the id, id given by list",
-            " Example: !deadlines add 01.03.37:16:20 Modellierung V5R15"
+            "Example: !deadlines add 01.03.37:16:20 Modellierung V5R15"
         ]
 
     def save_dates(self):
