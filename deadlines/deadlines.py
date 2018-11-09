@@ -53,9 +53,10 @@ class Deadlines_Handle(Handle):
 
     def list_dates(self, bot):
         self.update()
+        desc_size = max([len(date["module"]) for date in self.dates])
         date_str = "```--------DEADLINES--------\n"
         for date in self.dates:
-            date_str += ("ID[" + str(date["id"]) + "] DESC: " + date["module"] + " --- DATE: "
+            date_str += ("ID[" + str(date["id"]) + "] DESC: " + date["module"].ljust(desc_size) + " --- DATE: "
                          + date["date"].strftime("%d.%m.%y %H:%M Uhr") + " |\n")
         bot.send_message(date_str + "```")
 
