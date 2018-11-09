@@ -21,12 +21,12 @@ class Deadlines_Handle(Handle):
             self.list_dates(bot)
         elif msg_array[0] == "add":
             try:
-                self.add_date(msg_array[1], "".join(msg_array[2:len(msg_array)]))
+                self.add_date(msg_array[1], " ".join(msg_array[2:len(msg_array)]))
             except ValueError:
                 raise Exception("Unknown argument: " + msg_array[0] + " " + msg_array[1] + ". See man " + self.command)
         elif msg_array[0] == "edit":
             try:
-                self.edit_date(int(msg_array[1]), msg_array[2], "".join(msg_array[3:len(msg_array)]))
+                self.edit_date(int(msg_array[1]), msg_array[2], " ".join(msg_array[3:len(msg_array)]))
             except ValueError:
                 raise Exception("Unknown argument: " + msg_array[0] + " " + msg_array[1] + ". See man " + self.command)
         elif msg_array[0] == "remove":
