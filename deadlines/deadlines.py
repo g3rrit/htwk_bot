@@ -57,7 +57,7 @@ class Deadlines_Handle(Handle):
         desc_size = max([len(date["module"]) for date in self.dates])
         date_str = "```--------DEADLINES--------\n"
         for date in self.dates:
-            date_str += ("ID: " + str(date["id"]).rjust(id_size) + " DESC: " + date["module"].ljust(desc_size)
+            date_str += ("ID: " + str(date["id"]).rjust(id_size) + " --- DESC: " + date["module"].ljust(desc_size)
                          + " --- DATE: " + date["date"].strftime("%d.%m.%y %H:%M Uhr") + " |\n")
         bot.send_message(date_str + "```")
 
