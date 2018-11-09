@@ -6,6 +6,7 @@ from man import man
 from install import install
 from bongoloch import bongoloch
 from deadlines import deadlines
+from dl import dl
 from fortytwo import fortytwo
 from clyde import clyde
 
@@ -18,7 +19,8 @@ HANDLES = [
     bongoloch.Bongoloch_Handle(),
     deadlines.Deadlines_Handle(),
     fortytwo.Fortytwo_Handle(),
-    clyde.Clyde_Handle()
+    clyde.Clyde_Handle(),
+    dl.Dl_Handle()
 ]
 
 
