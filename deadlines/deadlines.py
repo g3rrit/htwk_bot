@@ -78,7 +78,7 @@ class Deadlines_Handle(Handle):
         self.update()
 
     def remove_date(self, date_id):
-        # TODO
+        self.dates = [date for date in self.dates if date["id"] != date_id]
         self.update()
 
     def update(self):
