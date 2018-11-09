@@ -35,8 +35,20 @@ class Deadlines_Handle(Handle):
             raise Exception("Unknown argument: " + msg_array[0] + ". See man " + self.command)
 
     def man(self):
-        # TODO
-        return []
+        return [
+            "usage: !deadlines [add|edit|remove|list] args",
+            "Manages a list of deadlines",
+            "Arguments:",
+            "  !deadlines list or !deadlines :",
+            "    lists all currently saved deadlines",
+            "  !deadlines add <dd>.<mm>.<yy>:<HH>:<MM> <description>",
+            "    adds new deadline of given date and description",
+            "  !deadlines remove <id>",
+            "    removes the date of the id, id given by list",
+            "  !deadlines edit <id> <dd>.<mm>.<yy>:<HH>:<MM> <description>",
+            "    changes data of the date of the id, id given by list",
+            " Example: !deadlines add 01.03.37:16:20 Modellierung V5R15"
+        ]
 
     def save_dates(self):
         with open(DATE_FILE, "wb") as file:
