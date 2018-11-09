@@ -59,7 +59,7 @@ class Deadlines_Handle(Handle):
         for date in self.dates:
             date_str += ("ID[" + str(date["id"]) + "] MODULE: " + date["module"] + " - DATE: "
                                      + date["date"].strftime("%d.%m.%y %H Uhr") + " |\n")
-        bot.send_message(date_str.join("```"))
+        bot.send_message(date_str + "```")
 
     def add_date(self, date_str, module_str):
         try:
