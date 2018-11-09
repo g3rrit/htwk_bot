@@ -55,8 +55,11 @@ class Deadlines_Handle(Handle):
     def list_dates(self, bot):
         # TODO
         self.update()
+        date_str = "```"
         for date in self.dates:
-            bot.send_message( "ID[" + str(date["id"]) + "] MODULE: " +  date["module"] + " - DATE: " + date["date"].strftime("%d.%m.%y %H Uhr") + " |")
+            date_str = date_str.join("ID[" + str(date["id"]) + "] MODULE: " + date["module"] + " - DATE: "
+                                     + date["date"].strftime("%d.%m.%y %H Uhr") + " |\n")
+        bot.send_message(date_str.join("```"))
 
     def add_date(self, date_str, module_str):
         try:
