@@ -26,7 +26,7 @@ class Deadlines_Handle(Handle):
                 raise Exception("Unknown argument: " + msg_array[0] + " " + msg_array[1] + ". See man " + self.command)
         elif msg_array[0] == "edit":
             try:
-                self.edit_date(int(msg_array[1]), "".join(msg_array[2:len(msg_array)]))
+                self.edit_date(int(msg_array[1]), msg_array[2], "".join(msg_array[3:len(msg_array)]))
             except ValueError:
                 raise Exception("Unknown argument: " + msg_array[0] + " " + msg_array[1] + ". See man " + self.command)
         elif msg_array[0] == "remove":
@@ -73,9 +73,9 @@ class Deadlines_Handle(Handle):
             raise Exception("Wrong format:" + date_str + " " + module_str + ". See man " + self.command)
         self.update()
 
-    def edit_date(self, date_id, date):
+    def edit_date(self, date_id, date, desc):
         self.remove_date(date_id)
-        self.add_date(date.split(maxsplit=1)[0], date.split(maxsplit=1)[1])
+        self.add_date(date, desc)
 
     def remove_date(self, date_id):
         self.dates = [date for date in self.dates if date["id"] != date_id]
