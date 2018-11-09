@@ -57,7 +57,7 @@ class Deadlines_Handle(Handle):
         self.update()
         date_str = "```"
         for date in self.dates:
-            date_str = date_str.join("ID[" + str(date["id"]) + "] MODULE: " + date["module"] + " - DATE: "
+            date_str += ("ID[" + str(date["id"]) + "] MODULE: " + date["module"] + " - DATE: "
                                      + date["date"].strftime("%d.%m.%y %H Uhr") + " |\n")
         bot.send_message(date_str.join("```"))
 
