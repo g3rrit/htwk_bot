@@ -15,7 +15,7 @@ class Man_Handle(Handle):
             try:
                 if msg_arr[0] == handle.command:
                     man_str = "\n".join(handle.man())
-                    bot.send_message("-------------\n-- Manpage for !" + handle.command + " --\n" + man_str)
+                    bot.send_message("```-------------\n-- Manpage for !" + handle.command + " --\n" + man_str + "```")
             except Exception as e:
                 bot.send_message(str(e))
 
