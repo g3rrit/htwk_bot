@@ -84,6 +84,8 @@ class Deadlines_Handle(Handle):
     def update(self):
         self.dates = [date for date in self.dates if date["date"] > datetime.now()]
         self.dates.sort(key=lambda date: date["date"])
+        for i in [0, len(self.dates) - 1]:
+            self.dates[i]["id"] = i
         self.save_dates()
 
 
