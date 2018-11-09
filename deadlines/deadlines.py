@@ -40,7 +40,6 @@ class Deadlines_Handle(Handle):
 
     def save_dates(self):
         with open(DATE_FILE, "wb") as file:
-
             pickle.dump(self.dates, file, pickle.HIGHEST_PROTOCOL)
 
     def load_dates(self):
@@ -53,19 +52,18 @@ class Deadlines_Handle(Handle):
             pass
 
     def list_dates(self, bot):
-        # TODO
         self.update()
-        date_str = "```"
+        date_str = "```--------DEADLINES--------\n"
         for date in self.dates:
-            date_str += ("ID[" + str(date["id"]) + "] MODULE: " + date["module"] + " - DATE: "
-                                     + date["date"].strftime("%d.%m.%y %H Uhr") + " |\n")
+            date_str += ("ID[" + str(date["id"]) + "] DESC: " + date["module"] + " --- DATE: "
+                         + date["date"].strftime("%d.%m.%y %H:%M Uhr") + " |\n")
         bot.send_message(date_str + "```")
 
     def add_date(self, date_str, module_str):
         try:
             date = {
                 "id": len(self.dates),
-                "date": datetime.strptime(date_str, "%d.%m.%y:%H"),
+                "date": datetime.strptime(date_str, "%d.%m.%y:%H:%M"),
                 "module": module_str
             }
             self.dates.append(date)
