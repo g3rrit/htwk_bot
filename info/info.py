@@ -13,8 +13,8 @@ class Info_Handle(Handle):
                 bot.send_message(str(e))
                 
         try:
-            bot.send_message("COMMANDS:\n |- " + "\n |- ".join(command_arr) +
-                             "\n to get a more detailed info of each command use !man <command>")
+            bot.send_message("```COMMANDS:\n |- " + "\n |- ".join(command_arr) +
+                             "\n to get a more detailed info of each command use !man <command>```")
         except Exception as e:
             bot.send_message(str(e))
 
