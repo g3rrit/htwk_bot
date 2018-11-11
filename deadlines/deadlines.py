@@ -72,15 +72,12 @@ class Deadlines_Handle(Handle):
         bot.send_message(date_str + "```")
 
     def add_date(self, date_str, module_str):
-        try:
-            date = {
-                "id": len(self.dates),
-                "date": datetime.strptime(date_str, "%d.%m.%y:%H:%M"),
-                "module": module_str
-            }
-            self.dates.append(date)
-        except:
-            raise Exception("Wrong format:" + date_str + " " + module_str + ". See man " + self.command)
+        date = {
+            "id": len(self.dates),
+            "date": datetime.strptime(date_str, "%d.%m.%y:%H:%M"),
+            "module": module_str
+        }
+        self.dates.append(date)
         self.update()
 
     def edit_date(self, date_id, date, desc):
