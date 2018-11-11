@@ -17,22 +17,20 @@ class Deadlines_Handle(Handle):
     def on_message(self, bot, client, message, raw_message):
         msg_array = message.split()
 
-        if len(msg_array) == 0 or msg_array[0] == "list":
-            self.list_dates(bot)
-        elif msg_array[0] == "add":
-            try:
+        try:
+            if len(msg_array) == 0 or msg_array[0] == "list":
+                self.list_dates(bot)
+            elif msg_array[0] == "add":
                 self.add_date(msg_array[1], " ".join(msg_array[2:len(msg_array)]))
-            except ValueError:
-                raise Exception("Unknown argument: " + msg_array[0] + " " + msg_array[1] + ". See man " + self.command)
-        elif msg_array[0] == "edit":
-            try:
+            elif msg_array[0] == "edit":
                 self.edit_date(int(msg_array[1]), msg_array[2], " ".join(msg_array[3:len(msg_array)]))
-            except ValueError:
-                raise Exception("Unknown argument: " + msg_array[0] + " " + msg_array[1] + ". See man " + self.command)
-        elif msg_array[0] == "remove":
-            self.remove_date(int(msg_array[1]))
-        else:
-            raise Exception("Unknown argument: " + msg_array[0] + ". See man " + self.command)
+                # raise Exception("Unknown argument: " + msg_array[0] + " " + msg_array[1] + ". See man " + self.command)
+            elif msg_array[0] == "remove":
+                self.remove_date(int(msg_array[1]))
+            else:
+                raise Exception("Unknown argument: " + msg_array[0] + ". See man " + self.command)
+        except IndexError:
+            raise IndexError("Wrong number of arguments: " + " ".join(msg_array) + ". See man " + self.command)
 
     def man(self):
         return [
