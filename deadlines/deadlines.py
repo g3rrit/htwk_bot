@@ -31,7 +31,7 @@ class Deadlines_Handle(Handle):
         except IndexError:
             raise IndexError("Wrong number of arguments: " + " ".join(msg_array) + ". See man " + self.command)
         except ValueError:
-            raise ValueError("Wrong format:" + " ".join(msg_array[1:len(msg_array)]) + ". See man " + self.command)
+            raise ValueError("Wrong format: " + " ".join(msg_array[1:len(msg_array)]) + ". See man " + self.command)
 
     def man(self):
         return [
