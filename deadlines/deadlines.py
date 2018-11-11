@@ -24,13 +24,14 @@ class Deadlines_Handle(Handle):
                 self.add_date(msg_array[1], " ".join(msg_array[2:len(msg_array)]))
             elif msg_array[0] == "edit":
                 self.edit_date(int(msg_array[1]), msg_array[2], " ".join(msg_array[3:len(msg_array)]))
-                # raise Exception("Unknown argument: " + msg_array[0] + " " + msg_array[1] + ". See man " + self.command)
             elif msg_array[0] == "remove":
                 self.remove_date(int(msg_array[1]))
             else:
                 raise Exception("Unknown argument: " + msg_array[0] + ". See man " + self.command)
         except IndexError:
             raise IndexError("Wrong number of arguments: " + " ".join(msg_array) + ". See man " + self.command)
+        except ValueError:
+            raise ValueError("Wrong format:" + " ".join(msg_array[1:len(msg_array)]) + ". See man " + self.command)
 
     def man(self):
         return [
