@@ -7,7 +7,8 @@ class Bitconnect_Handle(Handle):
 
     def on_message(self, bot, client, message, raw_message):
 
-        bot.send_message_tts("Hee hee heyyyyy wasasasasasaaaaaap Bitconneeeeeeeeeect     Bitconnneeeeeeeeeeeeeeeeeeeect Bitconneeeeeeeeeeeeeeeeeeeeeeeeeeect");
+        bot.send_message_tts("Hee hee heyyyyy wasasasasasaaaaaap Bitconneeeeeeeeeect     "
+                             "Bitconnneeeeeeeeeeeeeeeeeeeect Bitconneeeeeeeeeeeeeeeeeeeeeeeeeeect")
 
     def man(self):
         return [
