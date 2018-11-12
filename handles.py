@@ -26,5 +26,5 @@ HANDLES = [
     dl.Dl_Handle(),
     danke.Danke_Handle(),
     bitconnect.Bitconnect_Handle(),
-    boi.boi()
+    boi.Boi_Handle()
 ]
