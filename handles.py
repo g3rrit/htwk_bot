@@ -11,6 +11,7 @@ from fortytwo import fortytwo
 from clyde import clyde
 from danke import danke
 from bitconnect import bitconnect
+from boi import boi
 
 HANDLES = [
     example.Example_Handle(),
@@ -24,7 +25,6 @@ HANDLES = [
     clyde.Clyde_Handle(),
     dl.Dl_Handle(),
     danke.Danke_Handle(),
-    bitconnect.Bitconnect_Handle()
+    bitconnect.Bitconnect_Handle(),
+    boi.boi()
 ]
-
-
