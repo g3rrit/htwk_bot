@@ -64,6 +64,9 @@ class Deadlines_Handle(Handle):
 
     def list_dates(self, bot):
         self.update()
+        if len(self.dates) == 0:
+            bot.send_message("404")
+            return
         id_size = len(str(len(self.dates)))
         desc_size = max([len(date["module"]) for date in self.dates])
         date_str = "```--------DEADLINES--------\n"
