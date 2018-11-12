@@ -25,10 +25,10 @@ class Deadlines_Handle(Handle):
                 bot.send_message("```Date has been added```")
             elif msg_array[0] == "edit":
                 self.edit_date(int(msg_array[1]), msg_array[2], " ".join(msg_array[3:len(msg_array)]))
-                bot.send_message("```Date has been updated``")
+                bot.send_message("```Date has been updated```")
             elif msg_array[0] == "remove":
                 self.remove_date(int(msg_array[1]))
-                bot.send_message("```Date has been removed``")
+                bot.send_message("```Date has been removed```")
             else:
                 raise Exception("Unknown argument: " + msg_array[0] + ". See man " + self.command)
         except IndexError:
