@@ -43,6 +43,7 @@ class Bot:
     def __init__(self):
         self.handles = list()
         self.msg_buffer = list()
+        self.msg_tts_buffer = list()
 
     @staticmethod
     def start():
@@ -53,6 +54,9 @@ class Bot:
 
     def send_message(self, msg):
         self.msg_buffer.append(msg)
+
+    def send_message_tts(self, msg):
+        self.msg_tts_buffer.append(msg)
 
 
 @client.event
@@ -80,6 +84,14 @@ async def on_message(message):
         if isinstance(msg, str) and len(msg) > 0:
             await client.send_message(message.channel, msg)
     Bot.get().msg_buffer.clear()
+
+    # SEND ALL PENDING TTS MESSAGES TO THE SERVER
+    for msg in Bot.get().msg_tts_buffer:
+        if isinstance(msg, str) and len(msg) > 0:
+            await client.send_message(message.channel, msg, tts = True)
+    Bot.get().msg_tts_buffer.clear()
+
+
 
 
 @client.event

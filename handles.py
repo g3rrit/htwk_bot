@@ -10,6 +10,7 @@ from dl import dl
 from fortytwo import fortytwo
 from clyde import clyde
 from danke import danke
+from bitconnect import bitconnect
 
 HANDLES = [
     example.Example_Handle(),
@@ -22,7 +23,8 @@ HANDLES = [
     fortytwo.Fortytwo_Handle(),
     clyde.Clyde_Handle(),
     dl.Dl_Handle(),
-    danke.Danke_Handle()
+    danke.Danke_Handle(),
+    bitconnect.Bitconnect_Handle()
 ]
 
 
