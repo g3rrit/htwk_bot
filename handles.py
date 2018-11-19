@@ -12,6 +12,7 @@ from clyde import clyde
 from danke import danke
 from bitconnect import bitconnect
 from boi import boi
+from fakenews import fakenews
 
 HANDLES = [
     example.Example_Handle(),
@@ -26,5 +27,6 @@ HANDLES = [
     dl.Dl_Handle(),
     danke.Danke_Handle(),
     bitconnect.Bitconnect_Handle(),
-    boi.Boi_Handle()
+    boi.Boi_Handle(),
+    fakenews.Fakenews_Handle()
 ]
