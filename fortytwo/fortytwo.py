@@ -10,6 +10,6 @@ class Fortytwo_Handle(Handle):
 
     def man(self):
         return [
-            "usage: !42",
-            "returns answer the question of everything!"
+            "uage: !42",
+            "return anwer the quetion of everything!"
         ]

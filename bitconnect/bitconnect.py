@@ -7,13 +7,13 @@ class Bitconnect_Handle(Handle):
 
     def on_message(self, bot, client, message, raw_message):
 
-        bot.send_message_tts("Hee hee heyyyyy wasasasasasaaaaaap Bitconneeeeeeeeeect     "
+        bot.send_message_tts("Hee hee heyyyyy waaaaaaaaaaap Bitconneeeeeeeeeect     "
                              "Bitconnneeeeeeeeeeeeeeeeeeeect Bitconneeeeeeeeeeeeeeeeeeeeeeeeeeect")
 
     def man(self):
         return [
                 "manpage for the bitconnect command",
-                "usage: !bitconnect",
-                "not a scam"
+                "uage: !bitconnect",
+                "not a cam"
         ]
 

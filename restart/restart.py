@@ -4,7 +4,7 @@ from bot import Handle
 
 
 class Restart_Handle(Handle):
-    command = "restart"
+    command = "retart"
 
     def on_message(self, bot, client, message, raw_message):
         g: git.Git = git.Git(".")
@@ -17,7 +17,7 @@ class Restart_Handle(Handle):
 
     def man(self):
         return [
-            "usage: !restart",
-            "makes the bot pull all pending changes",
-            "and restarts itself"
+            "uage: !retart",
+            "make the bot pull all pending change",
+            "and retart itelf"
         ]

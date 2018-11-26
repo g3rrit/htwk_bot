@@ -5,10 +5,10 @@ class Clyde_Handle(Handle):
     command = "Clyde"
 
     def on_message(self, bot: "Bot", client, message, raw_message):
-        bot.send_message("This emoji doesn't work here because it's from a different server. Upgrade to Discord Nitro "
-                         "to use emoji from other servers")
+        bot.send_message("Thi emoji doen't work here becaue it' from a different erver. Upgrade to Dicord Nitro "
+                         "to ue emoji from other erver")
 
     def man(self):
-        return ["usage: !" + self.command,
-                "Annoys you on purpose"]
+        return ["uage: !" + self.command,
+                "Annoy you on purpoe"]
 
