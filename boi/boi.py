@@ -9,5 +9,5 @@ class Boi_Handle(Handle):
 
     def man(self):
         return [
-            "uage: !danke"
+            "usage: !danke"
         ]

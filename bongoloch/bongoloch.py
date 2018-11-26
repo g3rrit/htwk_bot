@@ -10,6 +10,6 @@ class Bongoloch_Handle(Handle):
 
     def man(self):
         return [
-            "uage: !bongoloch",
-            "return bongoloch to you"
+            "usage: !bongoloch",
+            "returns bongoloch to you"
         ]

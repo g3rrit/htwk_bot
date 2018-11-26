@@ -6,7 +6,7 @@ DATE_FILE = "deadlines/dates"
 
 
 class Deadlines_Handle(Handle):
-    command = "deadline"
+    command = "deadlines"
 
     dates = []
 
@@ -18,38 +18,38 @@ class Deadlines_Handle(Handle):
         msg_array = message.split()
 
         try:
-            if len(msg_array) == 0 or msg_array[0] == "lit":
+            if len(msg_array) == 0 or msg_array[0] == "list":
                 self.list_dates(bot)
             elif msg_array[0] == "add":
                 self.add_date(msg_array[1], " ".join(msg_array[2:len(msg_array)]))
-                bot.send_message("```Date ha been added```")
+                bot.send_message("```Date has been added```")
             elif msg_array[0] == "edit":
                 self.edit_date(int(msg_array[1]), msg_array[2], " ".join(msg_array[3:len(msg_array)]))
-                bot.send_message("```Date ha been updated```")
+                bot.send_message("```Date has been updated```")
             elif msg_array[0] == "remove":
                 self.remove_date(int(msg_array[1]))
-                bot.send_message("```Date ha been removed```")
+                bot.send_message("```Date has been removed```")
             else:
-                raise Exception("Unknown argument: " + msg_array[0] + ". ee man " + self.command)
+                raise Exception("Unknown argument: " + msg_array[0] + ". See man " + self.command)
         except IndexError:
-            raise IndexError("Wrong number of argument: " + " ".join(msg_array) + ". ee man " + self.command)
+            raise IndexError("Wrong number of arguments: " + " ".join(msg_array) + ". See man " + self.command)
         except ValueError:
-            raise ValueError("Wrong format: " + " ".join(msg_array[1:len(msg_array)]) + ". ee man " + self.command)
+            raise ValueError("Wrong format: " + " ".join(msg_array[1:len(msg_array)]) + ". See man " + self.command)
 
     def man(self):
         return [
-            "uage: !deadline [add|edit|remove|lit] arg",
-            "Manage a lit of deadline",
-            "Argument:",
-            "  !deadline lit or !deadline :",
-            "    lit all currently aved deadline",
-            "  !deadline add <dd>.<mm>.<yy>:<HH>:<MM> <decription>",
-            "    add new deadline of given date and decription",
-            "  !deadline remove <id>",
-            "    remove the date of the id, id given by lit",
-            "  !deadline edit <id> <dd>.<mm>.<yy>:<HH>:<MM> <decription>",
-            "    change data of the date of the id, id given by lit",
-            "Example: !deadline add 01.03.37:16:20 Modellierung V5R15"
+            "usage: !deadlines [add|edit|remove|list] args",
+            "Manages a list of deadlines",
+            "Arguments:",
+            "  !deadlines list or !deadlines :",
+            "    lists all currently saved deadlines",
+            "  !deadlines add <dd>.<mm>.<yy>:<HH>:<MM> <description>",
+            "    adds new deadline of given date and description",
+            "  !deadlines remove <id>",
+            "    removes the date of the id, id given by list",
+            "  !deadlines edit <id> <dd>.<mm>.<yy>:<HH>:<MM> <description>",
+            "    changes data of the date of the id, id given by list",
+            "Example: !deadlines add 01.03.37:16:20 Modellierung V5R15"
         ]
 
     def save_dates(self):
@@ -72,9 +72,9 @@ class Deadlines_Handle(Handle):
             return
         id_size = len(str(len(self.dates)))
         desc_size = max([len(date["module"]) for date in self.dates])
-        date_str = "```--------DEADLINE--------\n"
+        date_str = "```--------DEADLINES--------\n"
         for date in self.dates:
-            date_str += ("ID: " + str(date["id"]).rjust(id_size) + " --- DEC: " + date["module"].ljust(desc_size)
+            date_str += ("ID: " + str(date["id"]).rjust(id_size) + " --- DESC: " + date["module"].ljust(desc_size)
                          + " --- DATE: " + date["date"].strftime("%d.%m.%y %H:%M Uhr") + " |\n")
         bot.send_message(date_str + "```")
 
