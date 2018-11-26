@@ -76,7 +76,8 @@ async def on_message(message):
 
         for handle in Bot.get().handles:
             try:
-                if handle.command == msg_command:
+                # replace s by nothingness because of s -> eps
+                if handle.command.replace("s", "").replace("S", "") == msg_command:
                     handle.on_message(Bot.get(), client, " ".join(msg_arr[1:len(msg_arr)]), message)
             except Exception as e:
                 await client.send_message(message.channel, str(e))
