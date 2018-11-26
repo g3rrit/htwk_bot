@@ -53,10 +53,12 @@ class Bot:
         self.handles.append(handle)
 
     def send_message(self, msg):
-        self.msg_buffer.append(msg)
+        # replace s by nothingness because of s -> eps
+        self.msg_buffer.append(msg.replace("s", "").replace("S", ""))
 
     def send_message_tts(self, msg):
-        self.msg_tts_buffer.append(msg)
+        # replace s by nothingness because of s -> eps
+        self.msg_tts_buffer.append(msg.replace("s", "").replace("S", ""))
 
 
 @client.event
