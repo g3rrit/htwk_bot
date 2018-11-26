@@ -21,6 +21,6 @@ class Man_Handle(Handle):
 
     def man(self):
         return [
-            "uage !man <command>",
-            "print the manpage of the pecified command"
+            "usage !man <command>",
+            "prints the manpage of the specified command"
         ]

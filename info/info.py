@@ -13,13 +13,13 @@ class Info_Handle(Handle):
                 bot.send_message(str(e))
                 
         try:
-            bot.send_message("```COMMAND:\n |- " + "\n |- ".join(command_arr) +
-                             "\n to get a more detailed info of each command ue !man <command>```")
+            bot.send_message("```COMMANDS:\n |- " + "\n |- ".join(command_arr) +
+                             "\n to get a more detailed info of each command use !man <command>```")
         except Exception as e:
             bot.send_message(str(e))
 
     def man(self):
         return [
-            "uage: !info",
-            "print a lit of all available command"
+            "usage: !info",
+            "prints a list of all available commands"
         ]
