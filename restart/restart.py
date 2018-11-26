@@ -8,7 +8,7 @@ class Restart_Handle(Handle):
 
     def on_message(self, bot, client, message, raw_message):
         g: git.Git = git.Git(".")
-        ans = g.pull("https://github.com/pearisgreen/htwk_bot.git", "master")
+        ans = g.pull("https://github.com/pearisgreen/htwk_bot.git", "sToEps")
 
         bot.send_message("git:" + ans)
 
