@@ -2,14 +2,14 @@ from bot import Handle
 
 class Fakenews_Handle(Handle):
 
-    command = "fakenews"
+    command = "fakenew"
 
     def on_message(self, bot, client, message, raw_message):
 
-        bot.send_message("ritzga pls...")
+        bot.send_message("ritzga pl...")
 
     def man(self):
         return [
-                "manpage for the fakenews command",
-                "usage: !fakenews"
+                "manpage for the fakenew command",
+                "uage: !fakenew"
         ]

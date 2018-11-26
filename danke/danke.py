@@ -11,5 +11,5 @@ class Danke_Handle(Handle):
 
     def man(self):
         return [
-            "usage: !danke"
+            "uage: !danke"
         ]

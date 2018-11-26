@@ -31,8 +31,8 @@ class Example_Handle(Handle):
     def man(self):
         return [
                 "manpage for the example command",
-                "usage: !example <text> ...",
-                "command takes any text as an argument",
-                "and reposts it"
+                "uage: !example <text> ...",
+                "command take any text a an argument",
+                "and repot it"
         ]
 
