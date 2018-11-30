@@ -3,8 +3,6 @@ import discord
 import htwk_logging
 
 TOKEN_FILE = "token"
-with open(TOKEN_FILE, "r") as token_file:
-    TOKEN = token_file.readline()
 LOG = htwk_logging.create_logger(__name__)
 
 
@@ -35,6 +33,7 @@ client = discord.Client()
 
 class Bot:
     Instance = None
+    token = None
 
     @staticmethod
     def get():
@@ -43,13 +42,14 @@ class Bot:
         return Bot.Instance
 
     def __init__(self):
+        with open(TOKEN_FILE, "r") as token_file:
+            self.token = token_file.readline()
         self.handles = list()
         self.msg_buffer = list()
         self.msg_tts_buffer = list()
 
-    @staticmethod
-    def start():
-        client.run(TOKEN)
+    def start(self):
+        client.run(self.token)
 
     def add_handle(self, handle):
         self.handles.append(handle)
