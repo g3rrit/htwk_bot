@@ -2,7 +2,9 @@ import discord
 
 import htwk_logging
 
-TOKEN = "NTAzOTk0Nzc1MTM4MDc0NjM0.DrDrOg.jPx2hh-TLOmuSBcnU5gXmifdehA"
+TOKEN_FILE = "token"
+with open(TOKEN_FILE, "r") as token_file:
+    TOKEN = token_file.readline()
 LOG = htwk_logging.create_logger(__name__)
 
 
@@ -93,8 +95,6 @@ async def on_message(message):
         if isinstance(msg, str) and len(msg) > 0:
             await client.send_message(message.channel, msg, tts = True)
     Bot.get().msg_tts_buffer.clear()
-
-
 
 
 @client.event
