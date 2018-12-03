@@ -1,4 +1,5 @@
 from bot import Handle
+from replace import replace_util
 
 
 class Man_Handle(Handle):
@@ -15,7 +16,8 @@ class Man_Handle(Handle):
             try:
                 if msg_arr[0] == handle.command:
                     man_str = "\n".join(handle.man())
-                    bot.send_message("```-------------\n-- Manpage for !" + handle.command + " --\n" + man_str + "```")
+                    bot.send_message(replace_util.IGNORE_REPLACE_KEY + "```-------------\n-- Manpage for !"
+                                     + replace_util.replace(handle.command) + " --\n" + man_str + "```")
             except Exception as e:
                 bot.send_message(str(e))
 
