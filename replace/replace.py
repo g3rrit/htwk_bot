@@ -27,7 +27,9 @@ class Replace_Handle(Handle):
         ]
 
 
-def replace(string, rules):
+def replace(string, rules=None):
+    if rules is None:
+        rules = RULES
     for rule in rules:
         try:
             string = string.replace(rule[0], rule[1])
