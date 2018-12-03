@@ -1,7 +1,10 @@
 RULES = [("s", ""), ("S", "")]
+IGNORE_REPLACE_KEY = "\7"
 
 
 def replace(string, rules=None):
+    if string[0] == IGNORE_REPLACE_KEY:
+        return string[1:]
     if rules is None:
         rules = RULES
     for rule in rules:
