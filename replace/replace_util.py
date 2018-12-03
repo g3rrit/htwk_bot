@@ -1,4 +1,7 @@
-RULES = [("s", ""), ("S", "")]
+import pickle
+
+RULES = []
+RULE_FILE = "replace/rules"
 IGNORE_REPLACE_KEY = "\7"
 
 
@@ -7,6 +10,7 @@ def replace(string, rules=None):
         return string[1:]
     if rules is None:
         rules = RULES
+    load_rules(rules)
     for rule in rules:
         try:
             string = string.replace(rule[0], rule[1])
@@ -30,6 +34,7 @@ def add_rule(rules, msg_array):
     else:
         rule = (msg_array[0], " ".join(msg_array[1:]))
     rules.append(rule)
+    save_rules(rules)
 
 
 def remove_rule(rules, msg_array):
@@ -46,6 +51,7 @@ def remove_rule(rules, msg_array):
             rules.remove(rule)
         except ValueError:
             pass
+    save_rules(rules)
 
 
 def swap_rules_by_index(rules, msg_array):
@@ -60,3 +66,18 @@ def swap_rules_by_index(rules, msg_array):
         rules[i], rules[j] = rules[j], rules[i]
     except IndexError:
         raise IndexError("Invalid indices:" + str(i) + ", " + str(j))
+    save_rules(rules)
+
+
+def save_rules(rules):
+    with open(RULE_FILE, "wb") as file:
+        pickle.dump(rules, file, pickle.HIGHEST_PROTOCOL)
+
+
+def load_rules(rules):
+    try:
+        with open(RULE_FILE, "rb") as file:
+            rules = pickle.load(file)
+    except:
+        # TODO
+        pass
