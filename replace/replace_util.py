@@ -39,13 +39,13 @@ def remove_rule(rules, msg_array):
     for msg in msg_array:
         try:
             remove_set.append(rules[int(msg)])
-        except IndexError:
+        except (IndexError, ValueError):
             remove_set += [rule for rule in rules if rule[0] == msg]
-        for rule in remove_set:
-            try:
-                rules.remove(rule)
-            except ValueError:
-                pass
+    for rule in remove_set:
+        try:
+            rules.remove(rule)
+        except ValueError:
+            pass
 
 
 def swap_rules_by_index(rules, msg_array):
