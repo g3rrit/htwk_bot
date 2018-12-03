@@ -19,7 +19,7 @@ def list_rules(rules):
     list_str = ""
     for i in range(0, len(rules)):
         list_str += str(i) + ": " + str(rules[i][0]) + " -> " + str(rules[i][1]) + "\n"
-    return list_str
+    return "there are no rules" if len(list_str) == 0 else list_str
 
 
 def add_rule(rules, msg_array):
@@ -28,23 +28,24 @@ def add_rule(rules, msg_array):
     elif len(msg_array) == 1:
         rule = (msg_array[0], "")
     else:
-        rule = (msg_array[0], " ".join(msg_array[1:len(msg_array)]))
+        rule = (msg_array[0], " ".join(msg_array[1:]))
     rules.append(rule)
 
 
 def remove_rule(rules, msg_array):
     if len(msg_array) == 0:
         return
+    remove_set = []
     for msg in msg_array:
         try:
-            rules.remove(rules[int(msg)])
-        except ValueError:
-            remove_list = [rule for rule in rules if rule[0] == msg]
-            for rule in remove_list:
-                try:
-                    rules.remove(rule)
-                except ValueError:
-                    raise ValueError("Rule not found: " + rule)
+            remove_set.append(rules[int(msg)])
+        except IndexError:
+            remove_set += [rule for rule in rules if rule[0] == msg]
+        for rule in remove_set:
+            try:
+                rules.remove(rule)
+            except ValueError:
+                pass
 
 
 def swap_rules_by_index(rules, msg_array):

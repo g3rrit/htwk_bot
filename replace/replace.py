@@ -9,7 +9,7 @@ class Replace_Handle(Handle):
     def on_message(self, bot, client, message, raw_message):
         msg_array = message.split()
         if len(msg_array) == 0 or msg_array[0] == "list":
-            bot.send_message(IGNORE_REPLACE_KEY + "```" + list_rules(RULES) + " ```")
+            bot.send_message(IGNORE_REPLACE_KEY + "```" + list_rules(RULES) + "```")
         elif msg_array[0] == "add":
             add_rule(RULES, msg_array[1:len(msg_array)])
         elif msg_array[0] == "remove":
