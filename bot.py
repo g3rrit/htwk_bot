@@ -1,7 +1,7 @@
 import discord
 
 import htwk_logging
-from replace import replace
+from replace import replace_util as ru
 
 TOKEN_FILE = "token"
 LOG = htwk_logging.create_logger(__name__)
@@ -56,10 +56,10 @@ class Bot:
         self.handles.append(handle)
 
     def send_message(self, msg):
-        self.msg_buffer.append(replace.replace(msg))
+        self.msg_buffer.append(ru.replace(msg))
 
     def send_message_tts(self, msg):
-        self.msg_tts_buffer.append(replace.replace(msg))
+        self.msg_tts_buffer.append(ru.replace(msg))
 
 
 @client.event
@@ -78,7 +78,7 @@ async def on_message(message):
         for handle in Bot.get().handles:
             try:
                 # replace s by nothingness because of s -> eps
-                if replace.replace(handle.command) == msg_command:
+                if ru.replace(handle.command) == msg_command:
                     handle.on_message(Bot.get(), client, " ".join(msg_arr[1:len(msg_arr)]), message)
             except Exception as e:
                 await client.send_message(message.channel, str(e))
