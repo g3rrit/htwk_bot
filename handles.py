@@ -13,6 +13,7 @@ from danke import danke
 from bitconnect import bitconnect
 from boi import boi
 from fakenews import fakenews
+from vote import vote
 
 HANDLES = [
     example.Example_Handle(),
@@ -29,4 +30,5 @@ HANDLES = [
     bitconnect.Bitconnect_Handle(),
     boi.Boi_Handle(),
     fakenews.Fakenews_Handle(),
+	vote.Vote_Handle()
 ]
