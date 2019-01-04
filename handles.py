@@ -13,7 +13,6 @@ from danke import danke
 from bitconnect import bitconnect
 from boi import boi
 from fakenews import fakenews
-from replace import replace
 
 HANDLES = [
     example.Example_Handle(),
@@ -30,5 +29,4 @@ HANDLES = [
     bitconnect.Bitconnect_Handle(),
     boi.Boi_Handle(),
     fakenews.Fakenews_Handle(),
-    replace.Replace_Handle(),
 ]
