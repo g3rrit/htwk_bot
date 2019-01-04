@@ -30,5 +30,5 @@ HANDLES = [
     bitconnect.Bitconnect_Handle(),
     boi.Boi_Handle(),
     fakenews.Fakenews_Handle(),
-	vote.Vote_Handle()
+    vote.Vote_Handle()
 ]
