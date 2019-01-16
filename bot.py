@@ -70,7 +70,7 @@ async def on_message(message):
     LOG.info("got new message: [%s] %s", message.author, message.content)
     msg_arr = message.content.split()
 
-    if msg_arr[0][0] is "!":
+    if len(msg) != 0 and msg_arr[0][0] is "!":
 
         msg_command = msg_arr[0][1:len(msg_arr[0])]
 
